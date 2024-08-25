@@ -34,8 +34,8 @@ const App = () => {
                     <ModalCloseButton />
                     <ModalBody>
                         <Text>
-                            This page allows you to explore a map of Hawaii and view various tiles based on zoom levels.
-                            You can adjust the zoom level using the controls, and the number of tiles loaded will be displayed.
+                            This page is designed to help you understand how tile layers work by showing you the number of tiles required at each zoom level.
+                            While the map is centered on Hawaii, the focus is on exploring how zoom levels affect the number of tiles, helping you grasp why tile calculations are essential for different states.
                         </Text>
                         <Button mt={4} colorScheme="teal" onClick={onClose}>
                             Got it!

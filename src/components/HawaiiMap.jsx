@@ -17,7 +17,26 @@ const HawaiiMap = () => {
         // Initialize the map only once
         const initMap = new mapboxgl.Map({
             container: 'map',
-            style: 'mapbox://styles/mapbox/satellite-v9',
+            style: {
+                version: 8,
+                sources: {
+                    'usgs-topo': {
+                        type: 'raster',
+                        tiles: [
+                            'https://basemap.nationalmap.gov/arcgis/rest/services/USGSTopo/MapServer/tile/{z}/{y}/{x}'
+                        ],
+                        tileSize: 256,
+                    }
+                },
+                layers: [
+                    {
+                        id: 'usgs-topo-layer',
+                        type: 'raster',
+                        source: 'usgs-topo',
+                        paint: {}
+                    }
+                ]
+            },
             center: [-155.5828, 19.8968], // Centered on Hawaii
             zoom: 2, // Initial zoom level
             projection: 'globe', // Display the map as a 3D globe
@@ -69,7 +88,7 @@ const HawaiiMap = () => {
                     type: 'line', // Use a line layer to outline the polygons
                     source: 'tiles',
                     paint: {
-                        'line-color': '#39FF14', // Neon green color
+                        'line-color': '#ff1c14', // Neon green color
                         'line-width': 2,
                         'line-blur': 4, // Adds a glow effect to the lines
                         'line-opacity': 1,
@@ -88,7 +107,7 @@ const HawaiiMap = () => {
                 transform="translateX(-50%)"
                 zIndex={1}
                 p={4}
-                bg="whiteAlpha.800"
+                bg={"white"}
                 borderRadius="md"
                 boxShadow="md"
                 textAlign="center"
